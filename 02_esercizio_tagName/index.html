@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Test</title>
+<body>
+      <table>
+          <tr><th>ciao</th><th>Hidran</th></tr>
+      </table>
+
+
+      <script>
+
+          function getElement(tag){
+              var container="";
+              container+=tag;
+
+              var tabella =document.getElementsByTagName(container);
+            //   tabella[0].style.color='pink';
+            tabella[0].style.border='5px solid red';
+
+          }
+
+          getElement('table')
+
+      </script>
+</body>
+</html>

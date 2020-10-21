@@ -1,0 +1,1 @@
+Qui vedremo come accedere agli elementi del DOM per id e per classe

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            //una volta che il DOM è caricato posso accedere a qualunque elemento
+             //ora accediamo elemento h1
+             var h1 = document.getElementById('title');
+                h1.style.textTransform='uppercase';
+                h1.style.color='green';
+
+                //accedo direttamente su h1
+                h1.innerHTML='Hello world';
+
+                //posso aggiiungere evento
+                h1.onclick = function(){
+                    alert('you clicked me');
+                };
+
+                //metodo alternativp e piu elegante per aggiungere evento
+                h1.addEventListener('mouseover',
+            function(){
+                    h1.style.color='red';
+                })
+                //quando usciamo da elemento colore torna verde
+                h1.addEventListener('mouseout',
+            function(){
+                    h1.style.color='green';
+            })
+
+
+        //Ora vedimao come accedere a elemento per className
+        //dobbiamo sempre mettere questo codice dentro il DOM content loaded per eseguirlo correttamente
+        var row = document.getElementsByClassName('row');
+        //siccome getElements restituisce un html collection [che è simile a un array] dobbiamo verificare
+            if(row){
+                var ele = row[0];
+                ele.style.border = '2px solid red';
+            }
+
+        });
+
+
+
+    </script>
+
+
+    <h1 id="title">Document.getElementById</h1>
+
+    <div class="row">
+        <div class="col-md-6 push-md-3">
+            <p class="lead">A paragraph inside a div</p>
+            <button id="save" class="btn btn-success">SAVE</button>
+        </div>
+    </div>
+</body>
+</html>

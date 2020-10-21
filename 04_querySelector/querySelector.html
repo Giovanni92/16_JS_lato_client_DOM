@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- <style>
+    //la stessa selezione che ho fatto qui la faccio giu con il querySelector
+    /*metto la classe lead a seguire perche altrimenti p sovrascrive la classe generale*/
+    p.lead {
+        font-size: 80px;
+    }
+</style> -->
+
+    <script>
+
+        //Ora vediamo i nuovi selettori querySelector e querySelectorAll
+        document.addEventListener('DOMContentLoaded', function() {
+
+            //accede al DOM tramite delle query (# per l'id e . per le classi, come in CSS)
+             var h1 = document.querySelector('#title');
+                h1.style.textTransform='uppercase';
+                h1.style.color='green';
+
+                h1.innerHTML='Hello world';
+
+                h1.onclick = function(){
+                    alert('you clicked me');
+                };
+
+
+                //qui vedimao l'esempio, aggiungiamo le stesse proprietà come in style (CSS)
+                 //lo stesso selettore che utilizziamo per il CSS ('p.lead') 
+                 //lo utilizziamo per il querySelector
+                 //il querySelector seleziona UN SOLO ELEMENTO (esempio un solo p)
+                  //sia per nome elemento, classe, id
+
+                var p = document.querySelector('p.lead');
+                p.style.fontSize= '80px';
+
+                // var p = document.querySelectorAll('p.lead');
+                // //siccome restituisce un html collection (array) uso le square brackets
+                // p[0].style.fontSize= '80px';
+                // p[1].style.fontSize= '80px';    
+
+
+
+
+                h1.addEventListener('mouseover',
+            function(){
+                    h1.style.color='red';
+                })
+                //quando usciamo da elemento colore torna verde
+                h1.addEventListener('mouseout',
+            function(){
+                    h1.style.color='green';
+            })
+
+
+        //Ora vedimao come accedere a elemento per className
+        //dobbiamo sempre mettere questo codice dentro il DOM content loaded per eseguirlo correttamente
+        var row = document.getElementsByClassName('row');
+        //siccome getElements restituisce un html collection [che è simile a un array] dobbiamo verificare
+            if(row){
+                var ele = row[0];
+                ele.style.border = '2px solid red';
+            }
+
+        });
+
+
+
+    </script>
+
+<body>
+
+    <h1 id="title">Document.getElementById</h1>
+
+    <div class="row">
+        <!--Aggiungo un tag param nuovo per esempio:-->
+        <p class="lead">Lorem Ipsum</p>
+        <div class="col-md-6 push-md-3">
+            <p class="lead">A paragraph inside a div</p>
+            <button id="save" class="btn btn-success">SAVE</button>
+        </div>
+    </div>
+</body>
+</html>

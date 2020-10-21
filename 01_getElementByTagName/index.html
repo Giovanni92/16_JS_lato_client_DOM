@@ -1,0 +1,81 @@
+<html>
+<head><title>Test</title>
+
+
+<body>
+
+  <h1>DOM: Document Object Model</h1>
+
+   <table border="1">
+     <tr><th>Property</th><th>Description</th></tr>
+     <tr>
+       <td>document</td><td>Root document</td>
+     </tr>
+     <tr>
+       <td>ELEMENT</td><td>A document element</td>
+     </tr>
+
+     <td>nodelist</td><td>a list of nodelist</td>
+   </table>
+
+
+    <style>
+      .tRed, table.tRed{
+        border: 10px solid red;
+      }
+      .tRed tr:nth-child(odd) td {
+        color: black;
+      }
+    </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+
+
+    //posssiamo accedere al tag body con la funzione getElementByTagName
+    var b = document.getElementsByTagName('body');
+
+    //essendo un unico body  possiamo fare
+    b[0].style.color='blue';
+
+//ciclo tutti gli elementi del body
+ /*for (let i = 0; i < b.length; i++) {
+  b[i].style.color='green';
+   
+ }*/
+
+ //Per prenderci tutte le tabelle che ci sono in questo elemento:
+  //in questa var avremo come rif tutte le tabelle
+ var tables = document.getElementsByTagName('table');
+
+ for (var i=0; i< tables[i]; i++){
+          //gli diamo il nome della classe, es. tRed tabella sfondo rosso
+           //ora salgo e vado a creare un foglio di stile (style) dove do le proprieta alla classe
+          tables[i].className = "tRed";
+    }
+
+
+        })
+    // function getElement(tag) {
+    //     var t = document.getElementsByTagName(tag);
+        
+    //     for (var i=0; t[i]; i++){
+    //           t[i].style.border = '5px solid red';
+    //     }
+      
+    // } 
+
+
+
+    // accediamo all'elemento body facendo document.body
+    //document.body.style.backgroundColor = 'blue';
+
+
+    
+    </script>
+
+
+
+
+
+</body>
+</html>
