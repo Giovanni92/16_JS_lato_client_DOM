@@ -1,0 +1,105 @@
+<!-- Qui vedremo come un nodo nel DOM si relaziona con un altro nodo -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            //per accedere al container come possiamo fare
+             //selezionando id container
+            
+            var doc = document;
+            var container = doc.querySelector('#container');
+            //Ora se vediamo sulla console di chrome ci ritorna un albero
+            console.log(container);
+            //se facciamo console.dir invece che console.log possiamo vedere tutta l'alberatura 
+             //dell'elemento container
+            //su childNodes vediamo tutti i nodes che sono figli :
+            //0: text
+            // 1: section
+            // 2: text
+            //il parentNode è body
+            console.dir(container);
+
+            //se andiamo su children - section
+             //vediamo che il suo parentNode è div#container
+
+
+            //Ora vediamo come accedere a tutte queste prop attraverso il codice con js
+            //es. se vogliamo accedere al parentNode di container
+            container.parentNode.style.background='#c0c0c0';
+            //possiamo anche cambiare lo stile di body attraverso il figlio
+            //posso anche rimuovere degli elementi, es:
+            //una volta che sono nel parentNode posso rimuovere il figlio con la prop removeChild
+
+            // //eseguendo questo codice tutto il container sparirà
+            // container.parentNode.removeChild(container);
+
+            //possiamo anche accedere ai figli del container, ciclandoli
+            //chiediamo quanti figli ha container
+            // alert(container.children.length);   //1
+           //1 perchè container ha un figlio diretto section
+            //accedo ai figli di questo primo elemento con children
+            console.log(container.children[0].children[0]);
+           //accedo al figlio del primo figlio di container (article) - lo vedi su console di chrome
+
+           //ci dice il primo figlio di container è un nodo #text (che precede (section))
+            //perchè abbiamo lasciato uno spazio
+            console.log(container.firstChild);
+
+            //se vogliamo accedere al primo figlio che non sia di testo, cè la pèroprietà firstElementChild
+            // console.log(container.firstElementChild.style.color='red'); 
+             //ci darà section, skippa quindi #text restituiendo primo elemento html figlio di container
+             //attraverso js e DOM cambio colore dell'elemento section
+
+             //metto tutto dentro una variabile
+             var section = container.firstElementChild;
+
+             //se volessimo rimuovere questa sezione:
+             //chiamo padre.removeChild
+             container.removeChild(section);
+
+             //possiamo anche aggiungere un altro figlio
+             container.appendChild(section);
+            //faccio ritornare section rimossa, riappare anche a video
+            //non viene aggiunta un altra section perchè noi stiamo mettendo una section che gia esiste
+
+            //se volessi creare un altra sezione identica la clono
+            // var section2 = section.cloneNode();
+            //1 - clona anche i figli di section nella var section2
+            var section2 = section.cloneNode(true);
+            container.appendChild(section2);
+            //vedremmo che sotto a section (Su elements di devTools Chrome) si è appiccicata un altra section
+            //VEDIAMO che il primo section ha tutti i figli, section2 invece no.
+             //per clonare anche tutti i figli usiamo questa sintassi: var section2 = section.cloneNode(true);
+             //1 -gli passiamo il boolean true dentro il metodo cloneNode
+
+
+
+        })
+    </script>
+
+    <title>Document</title>
+</head>
+<body>
+    <!-- tutti questi nodi sono legati tra padri e figli -->
+    <!-- div container è padre di section -->
+    <div id="container">
+        <section>
+            <article>
+                <!-- header a questi due figli -->
+                <header>
+                    <h1>This is a head article</h1>
+                    <p>
+                        I'm a paragraph inside a header<br>
+                    </p>
+                </header>
+            </article>
+        </section>
+
+    </div>
+</body>
+</html>
