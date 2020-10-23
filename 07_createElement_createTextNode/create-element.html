@@ -1,0 +1,91 @@
+<!-- In questa lezione vedreamo come creare elementi manipolando il DOM con il metodo createElement
+del document -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        // vediamo come creare un menu con questo array
+        //suppondndo che ci ritorni una chiamata AJAX
+        var menu =[
+            {
+                url :'https://www.google.it/',
+                title :'google.it'
+            },
+            {
+                url :'https://www.microsoft.it/',
+                title :'microsoft.com'
+            },
+
+        ];
+            //1 - verifichiamo che il DOM sia pronto
+        document.addEventListener('DOMContentLoaded', function() {
+            var doc, ul, li, a, i, text;
+            doc = document;
+
+            //creiamo una lista
+             //metodo per creare qualunque elemento o tag di HTML
+             //questo elemento non è ancora stato appiccicato al DOM
+            ul = doc.createElement('ul');
+            //cicliamo il menu con ciclo for o foreach
+            menu.forEach(function(ele){
+
+                //per ogni voce di menu andiamo a creare un elemento ele
+                li = doc.createElement('li');
+                a = doc.createElement('a');
+
+
+                //per l'ele a (collegamento) impostiamo direttamente la prop href perchè ha nativamente la prop href
+                a.href = ele.url;
+                //se ho una prop nativa dell'elemento possiamo impostarla così:
+                //se è un attributo che non è nativo dell'elemento lo impostiamo così:
+              //setAttribute('nomeAttributo', valore)
+                a.setAttribute('title', ele.title);
+              //ora non vogliamo solo che compaia il titolo ma anche il testo che sarà uguale a title:
+                text = doc.createTextNode(ele.title);    //creo un nodo di tipo testo, NON di tipo element
+                //testo deve essere un figlio di a, quindi:
+                a.appendChild(text);
+
+            //elemento a è figlio di elemento li
+             li.appendChild(a);
+         //li è figlio di ul
+             ul.appendChild(li);
+
+            //  //saltando la parte commentata qua sopra. avremmo potuto fare:
+            //  //funziona allo stesso modo come sopra da riga 41 - 55
+            //  li.innerHTML = '<a href="'+ele.url+'">'+ele.title+'</a>';
+            //  ul.appendChild(li);
+
+  
+            });
+            // doc.body.appendChild(ul);
+            //se avessimo avuto un div id container nel body avremmo potuto fare:
+            doc.querySelector('#container').appendChild(ul);
+
+
+        });
+
+            //2 Andiamo a ciclarci l'array e creare per ogni suo valore
+            //- un elemento della lista, un elemento 'a' di navigazione e andiamo a impostare i valori
+
+
+    </script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+
+<!-- 
+Per riassumere possiamo creare qualunque tipo dki elemento e attributo di un elemento con il DOM
+con la funzione setAttribute ,
+ creare un elemento di tipo testo con createTextNode e con
+createElement posssiamo creare qualunque tipo di tag HTML .
+Con appendChild possiamo aggiungere un elemento a un altro elemento e creare cosi diversi nodi
+
+Un altra proprieta che si usa molto è innerHtml delle prop degli elementi HTML -->
