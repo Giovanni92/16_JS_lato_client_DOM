@@ -1,3 +1,4 @@
+
 // //per accedere al DOM dobbiamo verificare che il DOM sia pronto
 //  //function è la funzione che verrà chiamara quando il DOM è pronto
 // window.addEventListener('DOMContentLoaded', function(){
@@ -24,6 +25,7 @@
 
 
 // });
+
 
 window.addEventListener('DOMContentLoaded',
                        function(){

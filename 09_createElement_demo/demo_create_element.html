@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<style>
+    body{
+        background-color: lightblue;
+    }
+    a{
+        /* color: darkblue; */
+        color:orangered;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+    }
+</style>
+
+<script>
+
+var menu =[
+{
+    url :'https://www.google.it/',
+    title :'google.it'
+},
+{
+    url :'https://www.microsoft.it/',
+    title :'microsoft.com'
+},
+{
+    url :'https://blog.giallozafferano.it/allacciateilgrembiule/torta-di-zucca/',
+    title :'giallozafferano Tota per il nonno'
+},
+
+];
+
+function funzioneDelBottone(){
+    document.getElementById("torroncino").click();
+    alert("ti chiamo dalla funzioneDelBottone");
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var doc, ul, li, a, text;
+    doc = document;
+
+    ul = doc.createElement('ul');
+
+    menu.forEach(function(ele){
+
+        //per ogni voce di menu andiamo a creare un elemento ele
+        li = doc.createElement('li');
+        a = doc.createElement('a');
+
+        i = doc.createElement('i');
+
+        a.href = ele.url;
+
+        a.setAttribute('title', ele.title);
+        //ora non vogliamo solo che compaia il titolo ma anche il testo che sarà uguale a title:
+        text = doc.createTextNode(ele.title);    //creo un nodo di tipo testo, NON di tipo element
+
+        //testo deve essere un figlio di a, quindi:
+
+        a.appendChild(text);
+        li.appendChild(a);
+        ul.appendChild(li);
+
+
+    });
+
+
+    //evento se bottoncino viene schiacciato
+  
+
+    doc.querySelector('#container').appendChild(ul);
+});
+
+</script>
+
+<title>Demo Create Element</title>
+
+<body>
+    <div id="container">
+    <h1 id="torroncino" onclick="funzioneDelBottone()">Gofolina</h1>
+    <button id="bottoncino">SchiaSSami</button>
+</body>
+</html>
